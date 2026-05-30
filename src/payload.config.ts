@@ -38,8 +38,8 @@ export default buildConfig({
   sharp,
   plugins: [
     vercelBlobStorage({
-      enabled: true,
-      token: process.env.BLOB_READ_WRITE_TOKEN as string,
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      token: process.env.BLOB_READ_WRITE_TOKEN ?? '',
       collections: {
         media: true,
       },
