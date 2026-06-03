@@ -72,6 +72,9 @@ export interface Config {
     travel: Travel;
     countries: Country;
     cities: City;
+    tours: Tour;
+    blog: Blog;
+    leads: Lead;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +87,9 @@ export interface Config {
     travel: TravelSelect<false> | TravelSelect<true>;
     countries: CountriesSelect<false> | CountriesSelect<true>;
     cities: CitiesSelect<false> | CitiesSelect<true>;
+    tours: ToursSelect<false> | ToursSelect<true>;
+    blog: BlogSelect<false> | BlogSelect<true>;
+    leads: LeadsSelect<false> | LeadsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -129,6 +135,7 @@ export interface UserAuthOperations {
  */
 export interface User {
   id: string;
+  role: 'admin' | 'advisor' | 'user';
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -242,6 +249,66 @@ export interface City {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tours".
+ */
+export interface Tour {
+  id: string;
+  name: string;
+  city: string;
+  coverImage: string | Media;
+  link: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog".
+ */
+export interface Blog {
+  id: string;
+  title: string;
+  coverImage: string | Media;
+  content: {
+    root: {
+      type: string;
+      children: {
+        type: any;
+        version: number;
+        [k: string]: unknown;
+      }[];
+      direction: ('ltr' | 'rtl') | null;
+      format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+      indent: number;
+      version: number;
+    };
+    [k: string]: unknown;
+  };
+  category: 'tours' | 'news' | 'destinations' | 'trips';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads".
+ */
+export interface Lead {
+  id: string;
+  nombres: string;
+  apellidos: string;
+  email: string;
+  telefono: string;
+  tentativeDate: string;
+  travelPlan: string | Travel;
+  state: 'contactado' | 'en_proceso' | 'cerrado';
+  /**
+   * Último usuario que modificó este registro
+   */
+  updatedBy?: (string | null) | User;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -283,6 +350,18 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'cities';
         value: string | City;
+      } | null)
+    | ({
+        relationTo: 'tours';
+        value: string | Tour;
+      } | null)
+    | ({
+        relationTo: 'blog';
+        value: string | Blog;
+      } | null)
+    | ({
+        relationTo: 'leads';
+        value: string | Lead;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -331,6 +410,7 @@ export interface PayloadMigration {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
+  role?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -428,6 +508,46 @@ export interface CountriesSelect<T extends boolean = true> {
 export interface CitiesSelect<T extends boolean = true> {
   name?: T;
   country?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tours_select".
+ */
+export interface ToursSelect<T extends boolean = true> {
+  name?: T;
+  city?: T;
+  coverImage?: T;
+  link?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog_select".
+ */
+export interface BlogSelect<T extends boolean = true> {
+  title?: T;
+  coverImage?: T;
+  content?: T;
+  category?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "leads_select".
+ */
+export interface LeadsSelect<T extends boolean = true> {
+  nombres?: T;
+  apellidos?: T;
+  email?: T;
+  telefono?: T;
+  tentativeDate?: T;
+  travelPlan?: T;
+  state?: T;
+  updatedBy?: T;
   updatedAt?: T;
   createdAt?: T;
 }

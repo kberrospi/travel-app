@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { isAdmin } from '@/access/isAdmin'
+import { isAuthenticated } from '@/access/isAuthenticated'
 
 export const Cities: CollectionConfig = {
   slug: 'cities',
@@ -6,7 +8,10 @@ export const Cities: CollectionConfig = {
     useAsTitle: 'name',
   },
   access: {
-    read: () => true,
+    create: isAdmin,
+    read: isAuthenticated,
+    update: isAdmin,
+    delete: isAdmin,
   },
   fields: [
     {

@@ -113,6 +113,7 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
+  flex: 3
 }
 
 /* TRAVEL DESCRIPTION */
@@ -218,4 +219,218 @@
 
 .bodyAccordion{
   padding-top: 20px;
+}
+
+/* FORM TRAVEL */
+
+.contentFormTravel{
+  border: 1px solid var(--color-gray-light);
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex: 1;
+  height: fit-content;
+  position: sticky;
+  top: 110px;
+}
+
+.formTravel{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+  flex: 3
+}
+
+.formTravelContent{
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.formTravelTitle{
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 10px;
+}
+
+.datePicker{
+  width: 100%;
+}
+
+.dateFieldGroup, .InputForm{
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: none;
+  font-weight: 500;
+
+  &::placeholder{
+    color: #969BA1;
+  }
+}
+
+.dateLabel{
+  font-weight: 500;
+  color: var(--color-secondary);
+  font-size: 18px;
+}
+
+.dateTriggerIndicator{
+  color: var(--color-primary);
+}
+
+.submitButton{
+  background-color: var(--color-primary);
+  color: #FFF;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+}
+
+/* FORM FIELD WRAPPER */
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldError {
+  font-size: 12px;
+  color: #e53e3e;
+  font-weight: 400;
+  padding-left: 2px;
+}
+
+.inputInvalid {
+  border-color: #e53e3e !important;
+}
+
+.formSuccess {
+  font-size: 14px;
+  color: var(--color-accent);
+  font-weight: 500;
+  text-align: center;
+}
+
+.formError {
+  font-size: 14px;
+  color: #e53e3e;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* PHONE INPUT */
+.phoneGroup {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.countrySelect {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.countryTrigger {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  background: white;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.countryValue {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.countryIndicator {
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
+.countryListBox {
+  padding: 4px;
+  min-width: 220px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.countryListItem {
+  border-radius: 6px;
+  padding: 0;
+  outline: none;
+
+  &[data-focused] {
+    background-color: #F1F5FD;
+  }
+
+  &[data-selected] {
+    background-color: #EBF3FF;
+  }
+}
+
+.countryItemContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.countryDialCode {
+  margin-left: auto;
+  color: var(--color-gray);
+  font-size: 13px;
+}
+
+.countryFlagDisplay {
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.phoneNumberInput {
+  flex: 1;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  font-family: inherit;
+  background: white;
+  transition: border-color 0.15s;
+
+  &::placeholder {
+    color: #969BA1;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
 }

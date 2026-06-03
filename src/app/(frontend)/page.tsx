@@ -2,9 +2,14 @@ import { headers as getHeaders } from 'next/headers.js'
 import { HugeiconsIcon } from '@hugeicons/react'
 import {
   ArrowRight01Icon,
+  Backpack01Icon,
   Configuration01Icon,
+  DiscountIcon,
   DocumentValidationIcon,
   ShieldKeyIcon,
+  AddToListIcon,
+  HeadsetIcon,
+  HappyIcon,
 } from '@hugeicons-pro/core-stroke-rounded'
 import { getPayload } from 'payload'
 
@@ -12,6 +17,7 @@ import config from '@/payload.config'
 import style from './styles.module.css'
 import { CardTravel } from '@/components'
 import { Button } from '@heroui/react'
+import { STATIC_ITEMS } from '@/utils'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -124,6 +130,83 @@ export default async function HomePage() {
               />
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className={style.sectionWhyUs}>
+        <div className={style.whyUsInner}>
+          <div className={style.whyUsHeader}>
+            <span className={style.whyUsLabel}>Viaja con confianza</span>
+            <h2 className={style.whyUsTitle}>¿Porqué escogernos?</h2>
+          </div>
+          <div className={style.whyUsGrid}>
+            <div className={style.whyUsCard}>
+              <div className={style.whyUsIconWrap} style={{ background: '#EAF0FB' }}>
+                <HugeiconsIcon
+                  icon={Backpack01Icon}
+                  width={'36px'}
+                  height={'36px'}
+                  color="#5C98F2"
+                />
+              </div>
+              <h3 className={style.whyUsCardTitle}>Experiencias Memorables</h3>
+              <p className={style.whyUsCardText}>
+                Explora el mundo con nuestras increíbles aventuras y te llevarás recuerdos
+                inolvidables
+              </p>
+            </div>
+            <div className={style.whyUsCard}>
+              <div className={style.whyUsIconWrap} style={{ background: '#DFFAEC' }}>
+                <HugeiconsIcon icon={DiscountIcon} width={'36px'} height={'36px'} color="#28AF60" />
+              </div>
+              <h3 className={style.whyUsCardTitle}>Garantía al mejor precio</h3>
+              <p className={style.whyUsCardText}>
+                Podrás pagar tu plan de viaje en cuotas sin intereses o sin comisiones
+              </p>
+            </div>
+            <div className={style.whyUsCard}>
+              <div className={style.whyUsIconWrap} style={{ background: '#FDEAEA' }}>
+                <HugeiconsIcon
+                  icon={AddToListIcon}
+                  width={'36px'}
+                  height={'36px'}
+                  color="#E05A5A"
+                />
+              </div>
+              <h3 className={style.whyUsCardTitle}>Maxima Flexibilidad</h3>
+              <p className={style.whyUsCardText}>
+                Viaja la fecha que desees, sin horarios durante la ruta, sin grupos y sin largos
+                trayectos en autobus.
+              </p>
+            </div>
+            <div className={style.whyUsCard}>
+              <div className={style.whyUsIconWrap} style={{ background: '#FEF8E1' }}>
+                <HugeiconsIcon icon={HeadsetIcon} width={'36px'} height={'36px'} color="#E0A800" />
+              </div>
+              <h3 className={style.whyUsCardTitle}>Viaje Personalizado</h3>
+              <p className={style.whyUsCardText}>
+                Personaliza tu plan de viaje agregando o eliminando ciudades, ampliando o reduciendo
+                dias.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className={style.sectionStatics}>
+        <div className={style.containerStatics}>
+          {STATIC_ITEMS.map((item, index) => (
+            <div className={style.staticItem} key={index}>
+              <HugeiconsIcon icon={item.icon} width={'40px'} height={'40px'} />
+              <span className={style.staticItemNumber}>{item.number}</span>
+              <span className={style.staticItemLabel}>{item.label}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+      <section className={style.sectionBlog}>
+        <div>
+          <h2>Blog</h2>
         </div>
       </section>
     </div>

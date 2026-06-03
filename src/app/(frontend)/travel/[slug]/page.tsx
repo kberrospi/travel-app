@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation'
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import style from './styles.module.css'
-import { GalleryGrid, ItemsToTravel, Itinerary, TravelDetail } from './components'
+import { FormTravel, GalleryGrid, ItemsToTravel, Itinerary, TravelDetail } from './components'
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -47,7 +47,9 @@ export default async function TravelDetailPage({ params }: Props) {
           />
           <Itinerary itinerary={travel.itinerary} />
         </div>
-        <div style={{ width: '700px', border: '1px solid red' }}>form</div>
+        <div className={style.contentFormTravel}>
+          <FormTravel travelId={travel.id} />
+        </div>
       </div>
     </main>
   )

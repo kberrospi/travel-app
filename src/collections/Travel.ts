@@ -1,4 +1,6 @@
 import type { CollectionConfig } from 'payload'
+import { isAdmin } from '@/access/isAdmin'
+import { isAuthenticated } from '@/access/isAuthenticated'
 
 export const TRAVEL_STYLE_OPTIONS = [
   { label: 'Privado', value: 'private' },
@@ -16,7 +18,10 @@ export const Travel: CollectionConfig = {
     useAsTitle: 'title',
   },
   access: {
-    read: () => true,
+    create: isAdmin,
+    read: isAuthenticated,
+    update: isAdmin,
+    delete: isAdmin,
   },
   hooks: {
     beforeValidate: [

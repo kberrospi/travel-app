@@ -3,7 +3,7 @@ import './global.css'
 import { Outfit } from 'next/font/google'
 import { getPayload } from 'payload'
 import config from '@payload-config'
-import { Sidebar } from '@/components'
+import { Footer, Sidebar } from '@/components'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 
 const outfit = Outfit({ subsets: ['latin'] })
@@ -31,6 +31,7 @@ export default async function RootLayout(props: { children: React.ReactNode }) {
         <CurrencyProvider>
           <Sidebar countries={countries} />
           <main>{children}</main>
+          <Footer />
         </CurrencyProvider>
       </body>
     </html>

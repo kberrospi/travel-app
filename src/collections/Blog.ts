@@ -2,8 +2,11 @@ import type { CollectionConfig } from 'payload'
 import { isAdmin } from '@/access/isAdmin'
 import { isAuthenticated } from '@/access/isAuthenticated'
 
-export const Tours: CollectionConfig = {
-  slug: 'tours',
+export const Blog: CollectionConfig = {
+  slug: 'blog',
+  admin: {
+    useAsTitle: 'title',
+  },
   access: {
     create: isAdmin,
     read: isAuthenticated,
@@ -12,12 +15,7 @@ export const Tours: CollectionConfig = {
   },
   fields: [
     {
-      name: 'name',
-      type: 'text',
-      required: true,
-    },
-    {
-      name: 'city',
+      name: 'title',
       type: 'text',
       required: true,
     },
@@ -28,8 +26,19 @@ export const Tours: CollectionConfig = {
       required: true,
     },
     {
-      name: 'link',
-      type: 'text',
+      name: 'content',
+      type: 'richText',
+      required: true,
+    },
+    {
+      name: 'category',
+      type: 'select',
+      options: [
+        { label: 'Tours', value: 'tours' },
+        { label: 'Noticias', value: 'news' },
+        { label: 'Destinos', value: 'destinations' },
+        { label: 'Viajes', value: 'trips' },
+      ],
       required: true,
     },
   ],
