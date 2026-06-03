@@ -1,0 +1,436 @@
+.containerTravelDetail{
+  display: flex;
+  flex-direction: column;
+  padding-top: 170px;
+  gap: 40px;
+
+  @media (min-width: 1920px) {
+    max-width: 1420px;
+    margin: auto;
+  }
+
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    max-width: 1308px;
+    margin: auto;
+  }
+
+  @media (max-width: 1360px) {
+    max-width: 1277px;
+    margin: auto;
+  }
+}
+
+.travelTitle{
+  color: var(--color-secondary);
+  font-size: 32px;
+  font-weight: 600;
+}
+
+/* IMAGES */
+
+.containerImages{
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  grid-template-rows: 239px 239px;
+  gap: 8px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.main {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+/* TRAVEL DETAIL */
+.containerTravelDetailInfo{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid #EAEAEA;
+  padding-bottom: 20px;
+}
+
+.contentDetailInfo{
+  display: flex;
+  gap: 14px;
+}
+
+.detailInfoIcon{
+  background-color: #F1F5FD;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: fit-content;
+  padding: 18px;
+}
+
+.detailInfoText{
+  display: flex;
+  flex-direction: column;
+  line-height: normal;
+  gap: 12px;
+}
+
+.detailInfoTitle{
+  font-size: 14px;
+  color: var(--color-gray);
+}
+
+.detailInfoDescription{
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-blue-ebc);
+}
+
+.detailInfoDisclaimer{
+  font-size: 14px;
+  color: var(--color-gray-medium);
+}
+
+/* DATA TRAVEL*/ 
+.containerDataTravel{
+  display: flex;
+  gap: 70px;
+  justify-content: space-between;
+  padding-bottom: 80px; /* TODO borrar */
+}
+
+.contentDataTravel{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  flex: 3
+}
+
+/* TRAVEL DESCRIPTION */
+.containerTravelDescription{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h3{
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  span{
+    color: var(--color-gray);
+    line-height: 24px;
+    font-size: 18px;
+  }
+}
+
+/* ITEMS TO TRAVEL */
+
+.containerItemsToTravel{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 15px;
+}
+
+.contentItemsInclude, .contentItemsExclude{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  h3{
+    color: var(--color-secondary);
+    font-weight: 600;
+    font-size: 24px;
+  }
+}
+
+.itemInclude, .itemExclude{
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 16px;
+  color: var(--color-gray);
+}
+
+/* ITINERARY */
+.containerItinerary{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  h3{
+    font-size: 24px;
+    color: var(--color-secondary);
+    font-weight: 600;
+  }
+}
+
+.headerItinerary{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.headerItineraryDay{
+  display: flex;
+  border-radius: 5px;
+  gap: 5px;
+  align-items: center;
+  font-size: 14px;
+  color: #FFF;
+  background-color: var(--color-primary);
+  padding: 5px 7px;
+}
+
+.headingAccordion{
+  background-color: #F1F5FD;
+  border: 1px solid #EAEAEA;
+  border-radius: 8px;
+  transition: border-radius 0.15s ease;
+}
+
+:global([data-expanded]) .headingAccordion {
+  border-radius: 5px 5px 0 0;
+    border-bottom: none;
+}
+
+.panelAccordion{
+  border: 1px solid #EAEAEA;
+  border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.triggerAccordion{
+  padding: 10px;
+}
+
+.bodyAccordion{
+  padding-top: 20px;
+}
+
+/* FORM TRAVEL */
+
+.contentFormTravel{
+  border: 1px solid var(--color-gray-light);
+  border-radius: 12px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex: 1;
+  height: fit-content;
+  position: sticky;
+  top: 110px;
+}
+
+.formTravel{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+  flex: 3
+}
+
+.formTravelContent{
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.formTravelTitle{
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--color-secondary);
+  border-bottom: 1px solid var(--color-gray-light);
+  padding-bottom: 10px;
+}
+
+.datePicker{
+  width: 100%;
+}
+
+.dateFieldGroup, .InputForm{
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  box-shadow: none;
+  font-weight: 500;
+
+  &::placeholder{
+    color: #969BA1;
+  }
+}
+
+.dateLabel{
+  font-weight: 500;
+  color: var(--color-secondary);
+  font-size: 18px;
+}
+
+.dateTriggerIndicator{
+  color: var(--color-primary);
+}
+
+.submitButton{
+  background-color: var(--color-primary);
+  color: #FFF;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: opacity 0.2s ease-in-out;
+
+    &:hover {
+      opacity: 0.8;
+    }
+}
+
+/* FORM FIELD WRAPPER */
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fieldError {
+  font-size: 12px;
+  color: #e53e3e;
+  font-weight: 400;
+  padding-left: 2px;
+}
+
+.inputInvalid {
+  border-color: #e53e3e !important;
+}
+
+.formSuccess {
+  font-size: 14px;
+  color: var(--color-accent);
+  font-weight: 500;
+  text-align: center;
+}
+
+.formError {
+  font-size: 14px;
+  color: #e53e3e;
+  font-weight: 500;
+  text-align: center;
+}
+
+/* PHONE INPUT */
+.phoneGroup {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.countrySelect {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.countryTrigger {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  background: white;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover {
+    border-color: var(--color-primary);
+  }
+}
+
+.countryValue {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.countryIndicator {
+  color: var(--color-gray);
+  flex-shrink: 0;
+}
+
+.countryListBox {
+  padding: 4px;
+  min-width: 220px;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.countryListItem {
+  border-radius: 6px;
+  padding: 0;
+  outline: none;
+
+  &[data-focused] {
+    background-color: #F1F5FD;
+  }
+
+  &[data-selected] {
+    background-color: #EBF3FF;
+  }
+}
+
+.countryItemContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  font-size: 14px;
+  color: var(--color-secondary);
+}
+
+.countryDialCode {
+  margin-left: auto;
+  color: var(--color-gray);
+  font-size: 13px;
+}
+
+.countryFlagDisplay {
+  font-size: 20px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.phoneNumberInput {
+  flex: 1;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  outline: none;
+  font-family: inherit;
+  background: white;
+  transition: border-color 0.15s;
+
+  &::placeholder {
+    color: #969BA1;
+  }
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+}

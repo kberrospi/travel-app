@@ -8,6 +8,12 @@ import sharp from 'sharp'
 
 import { Users } from './collections/Users'
 import { Media } from './collections/Media'
+import { Travel } from './collections/Travel'
+import { Countries } from './collections/Countries'
+import { Cities } from './collections/Cities'
+import { Tours } from './collections/Tours'
+import { Blog } from './collections/Blog'
+import { Leads } from './collections/Leads'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -19,7 +25,7 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media],
+  collections: [Users, Media, Travel, Countries, Cities, Tours, Blog, Leads],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
   typescript: {
@@ -29,12 +35,14 @@ export default buildConfig({
     pool: {
       connectionString: process.env.DATABASE_URL || '',
     },
+    idType: 'uuid',
+    push: true,
   }),
   sharp,
   plugins: [
     vercelBlobStorage({
-      enabled: true,
-      token: process.env.BLOB_READ_WRITE_TOKEN as string,
+      enabled: Boolean(process.env.BLOB_READ_WRITE_TOKEN),
+      token: process.env.BLOB_READ_WRITE_TOKEN ?? '',
       collections: {
         media: true,
       },

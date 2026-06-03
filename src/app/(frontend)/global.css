@@ -1,0 +1,40 @@
+@import "tailwindcss";
+@import "@heroui/styles"; 
+
+:root {
+  --color-primary: #006FEE;
+  --color-secondary: #002248;
+  --color-background: #F8F9FA;
+  --color-text: #1A1A2E;
+  --color-accent: #06D6A0;
+  --color-gray: #585C63;
+  --color-gray-medium: #969BA1;
+  --color-gray-light: #E0E0E0;
+  --color-blue-ebc: #264F8B;
+}
+
+
+html {
+  font-size: 18px;
+  line-height: 32px;
+  -webkit-font-smoothing: antialiased;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  line-height: 32px;
+
+  margin: 0;
+
+  @media (max-width: 1024px) {
+    font-size: 15px;
+    line-height: 24px;
+  }
+}
