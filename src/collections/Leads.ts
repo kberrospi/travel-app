@@ -82,14 +82,12 @@ export const Leads: CollectionConfig = {
     {
       name: 'tentativeDate',
       type: 'date',
-      required: true,
     },
     {
       name: 'travelPlan',
       label: 'Plan de interés',
       type: 'relationship',
       relationTo: 'travel',
-      required: true,
       admin: {
         position: 'sidebar',
       },

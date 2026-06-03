@@ -12,7 +12,7 @@ export async function POST(req: NextRequest) {
 
   const { nombres, apellidos, email, telefono, tentativeDate, travelPlan } = body
 
-  if (!nombres || !apellidos || !email || !telefono || !tentativeDate || !travelPlan) {
+  if (!nombres || !apellidos || !email || !telefono) {
     return Response.json({ error: 'Faltan campos requeridos' }, { status: 400 })
   }
 
@@ -30,8 +30,8 @@ export async function POST(req: NextRequest) {
       apellidos: String(apellidos),
       email: String(email),
       telefono: String(telefono),
-      tentativeDate: String(tentativeDate),
-      travelPlan: String(travelPlan),
+      ...(tentativeDate ? { tentativeDate: String(tentativeDate) } : {}),
+      ...(travelPlan ? { travelPlan: String(travelPlan) } : {}),
       state: 'contactado',
     },
     overrideAccess: true, // visitante no autenticado — intencional

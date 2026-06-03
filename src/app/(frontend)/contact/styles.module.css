@@ -1,0 +1,338 @@
+.pageWrapper {
+  padding-top: 94px;
+  min-height: 100vh;
+  background-color: var(--color-background);
+}
+
+/* ── Header ── */
+.pageHeader {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-blue-ebc) 100%);
+  padding: 48px 0 40px;
+}
+
+.pageHeaderInner {
+  @media (min-width: 1920px) {
+    max-width: 1420px;
+    margin: auto;
+  }
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    max-width: 1308px;
+    margin: auto;
+  }
+  @media (max-width: 1360px) {
+    max-width: 1277px;
+    margin: auto;
+    padding: 0 24px;
+  }
+}
+
+.pageHeaderLabel {
+  color: var(--color-accent);
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 8px;
+  letter-spacing: 0.04em;
+}
+
+.pageHeaderTitle {
+  font-size: 36px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+/* ── Content Section ── */
+.contentSection {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.contentInner {
+  display: flex;
+  gap: 60px;
+  align-items: flex-start;
+
+  @media (min-width: 1920px) {
+    max-width: 1420px;
+    margin: auto;
+  }
+  @media (min-width: 1440px) and (max-width: 1920px) {
+    max-width: 1308px;
+    margin: auto;
+  }
+  @media (max-width: 1360px) {
+    max-width: 1277px;
+    margin: auto;
+    padding: 0 24px;
+  }
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 40px;
+  }
+}
+
+/* ── Info Column ── */
+.infoCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+}
+
+.infoLabel {
+  display: block;
+  color: var(--color-primary);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.infoTitle {
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.infoDescription {
+  font-size: 15px;
+  color: var(--color-gray);
+  line-height: 1.7;
+  margin: 16px 0 32px;
+}
+
+.contactItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.contactIcon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.contactText {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.contactLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-gray-medium);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.contactValue {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--color-secondary);
+}
+
+/* ── Form Column ── */
+.formCol {
+  flex: 1.2;
+}
+
+.formCard {
+  background: #fff;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* ── Form Internals (used by ContactForm.tsx) ── */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 36px;
+}
+
+.formTitle {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-secondary);
+  margin: 0 0 4px;
+}
+
+.formSubtitle {
+  font-size: 14px;
+  color: var(--color-gray);
+  margin: 0 0 16px;
+  line-height: 1.5;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--color-gray-light);
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.inputForm {
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.inputInvalid {
+  border-color: #e53935 !important;
+}
+
+.fieldError {
+  font-size: 12px;
+  color: #e53935;
+}
+
+/* ── Phone ── */
+.phoneGroup {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+
+.countrySelect {
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.countryTrigger {
+  width: 100%;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  background: white;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+}
+
+.countryTrigger:hover {
+  border-color: var(--color-primary);
+}
+
+.countryIndicator {
+  width: 16px;
+  height: 16px;
+  color: var(--color-gray);
+}
+
+.countryListBox {
+  max-height: 240px;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 4px;
+}
+
+.countryListItem {
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.countryListItem:hover {
+  background: #f2f6ff;
+}
+
+.countryItemContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.countryDialCode {
+  margin-left: auto;
+  color: var(--color-gray);
+  font-size: 13px;
+}
+
+.phoneNumberInput {
+  flex: 1;
+  height: 40px;
+  border: 1px solid var(--color-gray-light);
+  border-radius: 8px;
+  padding: 0 12px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: inherit;
+  outline: none;
+}
+
+.phoneNumberInput::placeholder {
+  color: var(--color-gray-medium);
+}
+
+.phoneNumberInput:focus {
+  border-color: var(--color-primary);
+}
+
+/* ── Submit ── */
+.submitButton {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  margin-top: 4px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.submitButton:hover {
+  opacity: 0.85;
+}
+
+.formSuccess {
+  font-size: 14px;
+  color: #28af60;
+  font-weight: 600;
+  margin: 0;
+  padding: 12px;
+  background: #ceffe3;
+  border-radius: 8px;
+}
+
+.formError {
+  font-size: 14px;
+  color: #e53935;
+  font-weight: 600;
+  margin: 0;
+  padding: 12px;
+  background: #fce4ec;
+  border-radius: 8px;
+}

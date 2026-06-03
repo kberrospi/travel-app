@@ -297,8 +297,8 @@ export interface Lead {
   apellidos: string;
   email: string;
   telefono: string;
-  tentativeDate: string;
-  travelPlan: string | Travel;
+  tentativeDate?: string | null;
+  travelPlan?: (string | null) | Travel;
   state: 'contactado' | 'en_proceso' | 'cerrado';
   /**
    * Último usuario que modificó este registro
