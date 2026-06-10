@@ -94,7 +94,7 @@ export const ContactForm = ({ travels }: Props) => {
     const dialCode = country?.dialCode ?? '+57'
 
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch('/api/create-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

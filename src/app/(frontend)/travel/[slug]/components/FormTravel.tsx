@@ -89,7 +89,7 @@ export const FormTravel = ({ travelId }: Props) => {
     const dialCode = country?.dialCode ?? '+57'
 
     try {
-      const res = await fetch('/api/leads', {
+      const res = await fetch('/api/create-lead', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -113,7 +113,7 @@ export const FormTravel = ({ travelId }: Props) => {
 
   return (
     <form className={style.formTravel} onSubmit={handleSubmit}>
-      <h2 className={style.formTravelTitle}>Agenda una llamada</h2>
+      <h2 className={style.formTravelTitle}>Agenda una asesoría</h2>
       <div className={style.formTravelContent}>
         {/* Fecha */}
         <div className={style.formField}>
@@ -269,7 +269,7 @@ export const FormTravel = ({ travelId }: Props) => {
           className={style.submitButton}
           isDisabled={status === 'loading' || status === 'success'}
         >
-          {status === 'loading' ? 'Enviando...' : 'Agendar llamada'}
+          {status === 'loading' ? 'Enviando...' : 'Agendar asesoría'}
         </Button>
       </div>
     </form>

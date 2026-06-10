@@ -9,15 +9,17 @@ import {
   ShieldKeyIcon,
   AddToListIcon,
   HeadsetIcon,
-  HappyIcon,
+  Calendar01Icon,
 } from '@hugeicons-pro/core-stroke-rounded'
 import { getPayload } from 'payload'
+import Link from 'next/link'
 
 import config from '@/payload.config'
 import style from './styles.module.css'
 import { CardTravel } from '@/components'
 import { Button } from '@heroui/react'
 import { STATIC_ITEMS } from '@/utils'
+import type { Blog, Media } from '@/payload-types'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -29,6 +31,14 @@ export default async function HomePage() {
     collection: 'travel',
     where: { isActive: { equals: true } },
     depth: 1,
+  })
+
+  const { docs: blogPosts } = await payload.find({
+    collection: 'blog',
+    depth: 1,
+    limit: 5,
+    sort: '-createdAt',
+    overrideAccess: true,
   })
 
   return (
@@ -119,7 +129,7 @@ export default async function HomePage() {
             </div>
           </div>
           <div className={style.cardsDestinations}>
-            {travels.map((travel) => (
+            {travels.slice(0, 5).map((travel) => (
               <CardTravel
                 key={travel.id}
                 coverImage={travel.coverImage}
@@ -205,8 +215,107 @@ export default async function HomePage() {
         </div>
       </section>
       <section className={style.sectionBlog}>
-        <div>
-          <h2>Blog</h2>
+        <div className={style.blogInner}>
+          <div className={style.blogHeader}>
+            <span className={style.blogLabel}>Nuestro blog</span>
+            <h2 className={style.blogTitle}>Noticias, consejos y guías</h2>
+          </div>
+
+          {blogPosts.length > 0 && (
+            <div className={style.blogGrid}>
+              {/* Left: 2x2 grid of small cards */}
+              <div className={style.blogSmallGrid}>
+                {(blogPosts.slice(0, 4) as Blog[]).map((post) => {
+                  const imgUrl =
+                    typeof post.coverImage === 'string'
+                      ? post.coverImage
+                      : ((post.coverImage as Media)?.url ?? '/assets/img/card.png')
+                  const CATEGORY_LABELS: Record<string, string> = {
+                    tours: 'Tours',
+                    news: 'Noticia',
+                    destinations: 'Destino',
+                    trips: 'Viajes',
+                  }
+                  return (
+                    <Link
+                      key={post.id}
+                      href={`/news/${post.slug ?? post.id}`}
+                      className={style.blogSmallCard}
+                    >
+                      <div className={style.blogSmallImgWrap}>
+                        <img src={imgUrl} alt={post.title} className={style.blogSmallImg} />
+                      </div>
+                      <div className={style.blogSmallBody}>
+                        <span className={style.blogCardCategory}>
+                          • {CATEGORY_LABELS[post.category] ?? post.category}
+                        </span>
+                        <h3 className={style.blogSmallTitle}>{post.title}</h3>
+                        <time className={style.blogCardDate}>
+                          <HugeiconsIcon icon={Calendar01Icon} width="14px" height="14px" />
+                          {new Date(post.createdAt).toLocaleDateString('es-CO', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit',
+                          })}
+                        </time>
+                      </div>
+                    </Link>
+                  )
+                })}
+              </div>
+
+              {/* Right: featured large card */}
+              {blogPosts[4] &&
+                (() => {
+                  const featured = blogPosts[4] as Blog
+                  const featuredImg =
+                    typeof featured.coverImage === 'string'
+                      ? featured.coverImage
+                      : ((featured.coverImage as Media)?.url ?? '/assets/img/card.png')
+                  const CATEGORY_LABELS: Record<string, string> = {
+                    tours: 'Tours',
+                    news: 'Noticia',
+                    destinations: 'Destino',
+                    trips: 'Viajes',
+                  }
+                  return (
+                    <Link
+                      href={`/news/${featured.slug ?? featured.id}`}
+                      className={style.blogFeaturedCard}
+                    >
+                      <img
+                        src={featuredImg}
+                        alt={featured.title}
+                        className={style.blogFeaturedImg}
+                      />
+                      <div className={style.blogFeaturedOverlay}>
+                        <span className={style.blogFeaturedCategory}>
+                          • {CATEGORY_LABELS[featured.category] ?? featured.category}
+                        </span>
+                        <h3 className={style.blogFeaturedTitle}>{featured.title}</h3>
+                        <time className={style.blogFeaturedDate}>
+                          <HugeiconsIcon icon={Calendar01Icon} width="14px" height="14px" />
+                          {new Date(featured.createdAt).toLocaleDateString('es-CO', {
+                            year: 'numeric',
+                            month: 'long',
+                            day: '2-digit',
+                          })}
+                        </time>
+                      </div>
+                    </Link>
+                  )
+                })()}
+            </div>
+          )}
+
+          <div className={style.blogFooter}>
+            <Link href="/news" className={style.blogFooterLink}>
+              <span>Ver todos los post</span>
+              <Button isIconOnly className={style.buttonTravels}>
+                <HugeiconsIcon icon={ArrowRight01Icon} />
+              </Button>
+            </Link>
+          </div>
         </div>
       </section>
     </div>
