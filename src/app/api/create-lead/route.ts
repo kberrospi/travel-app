@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
       telefono: String(telefono),
       ...(tentativeDate ? { tentativeDate: String(tentativeDate) } : {}),
       ...(travelPlan ? { travelPlan: String(travelPlan) } : {}),
-      state: 'contactado',
+      state: 'nuevo',
     },
     overrideAccess: true, // visitante no autenticado — intencional
     draft: false,

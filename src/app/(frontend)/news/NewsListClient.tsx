@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { Blog, Media } from '@/payload-types'
 import styles from './styles.module.css'
+import { CardBlog } from './components'
 
 const CATEGORIES = [
   { key: 'all', label: 'Todos' },
@@ -53,8 +54,8 @@ export const NewsListClient = ({ posts }: Props) => {
                 ? post.coverImage
                 : ((post.coverImage as Media)?.url ?? '/assets/img/card.png')
             const cat = CATEGORY_META[post.category]
-
-            return (
+            return <CardBlog key={post.id} post={post} imgUrl={imgUrl} cat={cat} />
+            /* return (
               <article key={post.id} className={styles.card}>
                 <div className={styles.cardImgWrapper}>
                   <img src={imgUrl} alt={post.title} className={styles.cardImg} />
@@ -78,7 +79,7 @@ export const NewsListClient = ({ posts }: Props) => {
                   </time>
                 </div>
               </article>
-            )
+            ) */
           })}
         </div>
       )}

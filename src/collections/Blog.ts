@@ -13,6 +13,22 @@ export const Blog: CollectionConfig = {
     update: isAdmin,
     delete: isAdmin,
   },
+  hooks: {
+    beforeValidate: [
+      ({ data, operation }) => {
+        if ((operation === 'create' || operation === 'update') && data?.title && !data?.slug) {
+          data.slug = (data.title as string)
+            .toLowerCase()
+            .normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .replace(/[^a-z0-9\s-]/g, '')
+            .trim()
+            .replace(/\s+/g, '-')
+        }
+        return data
+      },
+    ],
+  },
   fields: [
     {
       name: 'title',
@@ -24,6 +40,15 @@ export const Blog: CollectionConfig = {
       type: 'upload',
       relationTo: 'media',
       required: true,
+    },
+    {
+      name: 'slug',
+      type: 'text',
+      unique: true,
+      index: true,
+      admin: {
+        description: 'Se auto-genera del título. Ej: viajes-auroras',
+      },
     },
     {
       name: 'content',

@@ -268,6 +268,10 @@ export interface Blog {
   id: string;
   title: string;
   coverImage: string | Media;
+  /**
+   * Se auto-genera del título. Ej: viajes-auroras
+   */
+  slug?: string | null;
   content: {
     root: {
       type: string;
@@ -299,7 +303,11 @@ export interface Lead {
   telefono: string;
   tentativeDate?: string | null;
   travelPlan?: (string | null) | Travel;
-  state: 'contactado' | 'en_proceso' | 'cerrado';
+  state: 'nuevo' | 'contactado' | 'en_proceso' | 'cerrado';
+  /**
+   * Asesor asignado automáticamente al crear el lead
+   */
+  assignedAdvisor?: (string | null) | User;
   /**
    * Último usuario que modificó este registro
    */
@@ -530,6 +538,7 @@ export interface ToursSelect<T extends boolean = true> {
 export interface BlogSelect<T extends boolean = true> {
   title?: T;
   coverImage?: T;
+  slug?: T;
   content?: T;
   category?: T;
   updatedAt?: T;
@@ -547,6 +556,7 @@ export interface LeadsSelect<T extends boolean = true> {
   tentativeDate?: T;
   travelPlan?: T;
   state?: T;
+  assignedAdvisor?: T;
   updatedBy?: T;
   updatedAt?: T;
   createdAt?: T;
