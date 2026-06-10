@@ -3,6 +3,8 @@ import config from '@payload-config'
 import TravelListClient from './components/TravelListClient'
 import styles from './styles.module.css'
 
+export const dynamic = 'force-dynamic'
+
 export default async function TravelPage() {
   const payload = await getPayload({ config })
 

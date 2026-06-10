@@ -3,6 +3,8 @@ import config from '@payload-config'
 import styles from './styles.module.css'
 import { NewsListClient } from './NewsListClient'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Blog & Noticias | Traveler',
   description: 'Mantente informado con las últimas noticias de viajes, destinos y tours.',
