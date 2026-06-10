@@ -6,6 +6,8 @@ import config from '@payload-config'
 import { Footer, Sidebar } from '@/components'
 import { CurrencyProvider } from '@/context/CurrencyContext'
 
+export const dynamic = 'force-dynamic'
+
 const outfit = Outfit({ subsets: ['latin'] })
 
 export const metadata = {
