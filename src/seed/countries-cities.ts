@@ -1,6 +1,7 @@
 import { getPayload } from 'payload'
 import config from '@payload-config'
 import { Country } from 'country-state-city'
+import dotenv from 'dotenv' // 1. Importamos dotenv
 
 const PRINCIPAL_CITIES: Record<string, string[]> = {
   AD: ['Andorra la Vella'],
@@ -74,6 +75,15 @@ const PRINCIPAL_CITIES: Record<string, string[]> = {
 }
 
 async function seed() {
+  if (!process.env.VERCEL) {
+    dotenv.config({ path: '.env' })
+    console.log('🏠 Local: Cargando archivo .env físico para inicializar Payload...')
+  } else {
+    console.log(
+      `🚀 Vercel (${process.env.VERCEL_ENV}): Utilizando variables nativas del sistema...`,
+    )
+  }
+
   const payload = await getPayload({ config })
 
   const EUROPE_ISO_CODES = [
