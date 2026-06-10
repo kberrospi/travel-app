@@ -1,7 +1,7 @@
 import type { CollectionConfig } from 'payload'
 import type { User, Travel } from '@/payload-types'
 import { isAdmin } from '@/access/isAdmin'
-import { Resend } from 'resend'
+import nodemailer from 'nodemailer'
 
 export const Leads: CollectionConfig = {
   slug: 'leads',
@@ -39,9 +39,16 @@ export const Leads: CollectionConfig = {
         if (operation !== 'create') return
         if (context.skipAdvisorAssignment) return
 
-        const apiKey = process.env.RESEND_API_KEY
-        const fromAddress = process.env.RESEND_FROM ?? 'noreply@europabajocosto.com'
+        const emailUser = process.env.EMAIL_USER
+        const emailPass = process.env.EMAIL_PASS
         const companyName = 'Europa Bajo Costo'
+
+        if (!emailUser || !emailPass) return
+
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: { user: emailUser, pass: emailPass },
+        })
 
         // 1. Buscar asesores disponibles y asignar uno aleatorio
         const { docs: advisors } = await req.payload.find({
@@ -84,9 +91,6 @@ export const Leads: CollectionConfig = {
           }
         }
 
-        if (!apiKey) return
-        const resend = new Resend(apiKey)
-
         const travelInfo = travelPlan
           ? `
             <tr><td style="padding:6px 0;color:#585C63;"><strong>Plan:</strong></td><td style="padding:6px 0;">${travelPlan.title}</td></tr>
@@ -97,8 +101,8 @@ export const Leads: CollectionConfig = {
           : '<tr><td colspan="2" style="padding:6px 0;color:#585C63;">Sin plan específico seleccionado</td></tr>'
 
         // 3. Email de confirmación al cliente
-        await resend.emails.send({
-          from: `${companyName} <${fromAddress}>`,
+        await transporter.sendMail({
+          from: `"${companyName}" <${emailUser}>`,
           to: doc.email,
           subject: '¡Tu solicitud fue recibida! 🌍',
           html: `
@@ -121,8 +125,8 @@ export const Leads: CollectionConfig = {
 
         // 4. Email de notificación al asesor asignado
         if (assignedAdvisor) {
-          await resend.emails.send({
-            from: `${companyName} <${fromAddress}>`,
+          await transporter.sendMail({
+            from: `"${companyName}" <${emailUser}>`,
             to: assignedAdvisor.email,
             subject: `Nuevo lead asignado: ${doc.nombres} ${doc.apellidos}`,
             html: `
