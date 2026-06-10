@@ -9,6 +9,8 @@ import {
 import styles from './styles.module.css'
 import { ContactForm } from './ContactForm'
 
+export const dynamic = 'force-dynamic'
+
 export const metadata = {
   title: 'Contáctanos | Traveler',
   description: 'Escríbenos y uno de nuestros asesores te atenderá a la brevedad.',

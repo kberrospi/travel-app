@@ -6,6 +6,8 @@ import type { Media, Blog } from '@/payload-types'
 import { LexicalRenderer } from './LexicalRenderer'
 import styles from './style.module.css'
 
+export const dynamic = 'force-dynamic'
+
 const CATEGORY_META: Record<string, { bg: string; color: string; label: string }> = {
   tours: { bg: '#EAF0FB', color: '#264F8B', label: 'Tours' },
   news: { bg: '#CEFFE3', color: '#28AF60', label: 'Noticias' },

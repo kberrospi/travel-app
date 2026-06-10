@@ -4,6 +4,8 @@ import config from '@payload-config'
 import style from './styles.module.css'
 import { FormTravel, GalleryGrid, ItemsToTravel, Itinerary, TravelDetail } from './components'
 
+export const dynamic = 'force-dynamic'
+
 interface Props {
   params: Promise<{ slug: string }>
 }
