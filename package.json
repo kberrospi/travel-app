@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "cross-env NODE_OPTIONS=\"--no-deprecation --max-old-space-size=8000\" payload generate:importmap && next build",
+    "vercel-build": "cross-env NODE_OPTIONS=--no-deprecation tsx src/seed/countries-cities.ts && npm run build",
     "dev": "cross-env NODE_OPTIONS=--no-deprecation next dev --port 4000",
     "devsafe": "rm -rf .next && cross-env NODE_OPTIONS=--no-deprecation next dev",
     "seed:countries": "cross-env NODE_OPTIONS=--no-deprecation tsx --env-file=.env src/seed/countries-cities.ts",
